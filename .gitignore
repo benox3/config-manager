@@ -1,0 +1,6 @@
+installs/
+backups/
+nvim/temp_dirs/
+nvim/.netrwhist
+tmux/.tmux/plugins/
+tmux/.tmux/resurrect/
