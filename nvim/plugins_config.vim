@@ -34,6 +34,7 @@ nnoremap <leader>nn :NERDTreeToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Async Completion on startup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neosnippet#enable_completed_snippet = 1
 let g:deoplete#enable_at_startup = 1
 inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
@@ -73,3 +74,8 @@ let g:ale_fix_on_save = 1
 " => Goyo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>z :Goyo<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-jsx
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jsx_ext_required = 0

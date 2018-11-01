@@ -4,3 +4,4 @@ nvim/temp_dirs/
 nvim/.netrwhist
 tmux/.tmux/plugins/
 tmux/.tmux/resurrect/
+zsh/.secret_zshrc

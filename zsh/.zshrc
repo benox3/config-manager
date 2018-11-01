@@ -64,6 +64,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  tmux
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -102,10 +103,23 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
+#include file if it exists function
+include () {
+    [[ -f "$1" ]] && source "$1"
+}
+
 export CONFIG_MANAGER="$HOME/config-manager"
 export VIM_RT="$CONFIG_MANAGER/nvim"
 export MYVIMRC="$VIM_RT/init.vim"
 export AGIGNORE="$CONFIG_MANAGER/zsh/.agignore"
 export VISUAL=vim
 export EDITOR="$VISUAL"
+alias nvim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias vi='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias ag="ag --path-to-ignore $AGIGNORE"
+
+[[ $TMUX = "" ]] && export TERM="xterm-256color"
+
+export SECRET_ZSHRC="$HOME/config-manager/zsh/.secret_zshrc"
+include $SECRET_ZSHRC
