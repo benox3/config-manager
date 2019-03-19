@@ -61,8 +61,13 @@ colorscheme gruvbox
 " => ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-\   'javascript': ['eslint', 'prettier', 'flow'],
+\   'javascript': ['eslint'],
+\   'typescript': ['tslint', 'tsserver'],
 \}
+
+let g:ale_fixers = { 'typescript': ['tslint']}
+let g:ale_completion_enabled = 0
+let g:ale_fix_on_save = 1
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Goyo
