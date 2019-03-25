@@ -21,7 +21,11 @@ call denite#custom#var('file_rec', 'command',
 
 endif
 nnoremap <C-f> :<C-u>Denite file_rec<CR>
-nnoremap <leader>g :Denite grep -split=tab -mode=normal<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Esearch
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call esearch#map('<leader>g', 'esearch')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTree
@@ -49,6 +53,7 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#show_tabs = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_theme='gruvbox'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Gruvbox
@@ -62,7 +67,7 @@ colorscheme gruvbox
 " => ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['eslint', 'flow'],
 \   'typescript': ['tslint', 'tsserver'],
 \}
 
@@ -79,3 +84,10 @@ nnoremap <leader>z :Goyo<cr>
 " => vim-jsx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jsx_ext_required = 0
+
+
+
+""" vimwiki
+set nocompatible
+filetype plugin on
+syntax on

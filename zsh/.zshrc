@@ -1,8 +1,18 @@
 # If you come from bash you might have to change your $PATH.
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_FIXTERM_WITH_256COLOR=true
+ZSH_TMUX_AUTOSTART_ONCE=true
+ZSH_TMUX_AUTOCONNECT=true
+ZSH_TMUX_AUTOQUIT=false
+# If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -65,6 +75,7 @@ ZSH_THEME="agnoster"
 plugins=(
   git
   tmux
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -102,6 +113,7 @@ source $ZSH/oh-my-zsh.sh
 #vim mode
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+tmux source ~/.tmux.conf
 
 #include file if it exists function
 include () {
@@ -123,3 +135,15 @@ alias ag="ag --path-to-ignore $AGIGNORE"
 
 export SECRET_ZSHRC="$HOME/config-manager/zsh/.secret_zshrc"
 include $SECRET_ZSHRC
+
+# SPACESHIP_PROMPT_ADD_NEWLINE="true"
+# SPACESHIP_CHAR_SYMBOL="\uf0e7"
+# SPACESHIP_CHAR_PREFIX="\ue5ff"
+# SPACESHIP_CHAR_SUFFIX=(" ")
+# SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
+# SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
+# SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
+# SPACESHIP_USER_SHOW="true"
+
+# alias ls='colorls --dark --sort-dirs'
+# alias lc='colorls --tree --dark'
