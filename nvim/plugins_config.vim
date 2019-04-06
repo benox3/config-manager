@@ -68,7 +68,7 @@ colorscheme gruvbox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow'],
-\   'typescript': ['tslint', 'tsserver'],
+\   'typescript': ['tslint'],
 \}
 
 let g:ale_fixers = { 'typescript': ['tslint']}
