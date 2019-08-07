@@ -29,16 +29,12 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Cursor Highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set colorcolumn=+1        " highlight column after 'textwidth'
-set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
 augroup BgHighlight
   autocmd!
   autocmd WinEnter * set cul
   autocmd WinLeave * set nocul
 augroup END
 set cursorline
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-set colorcolumn=100
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Leader
@@ -86,6 +82,16 @@ nnoremap <leader>bd :bd!<cr>
 nnoremap <leader>ba :%bd\|e#<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Close All Buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>w :w<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Close All Buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>s ::s/\s\+/\r/g \|'[,sort \| :,']j<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -99,7 +105,8 @@ endtry
 " => 80 Line rule
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists('+colorcolumn')
-  set colorcolumn=80
+  highlight ColorColumn ctermbg=235 guibg=#2c2d27
+  let &colorcolumn=join(range(81,999),",")
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
