@@ -1,11 +1,43 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Denite settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Define mappings
+	autocmd FileType denite call s:denite_my_settings()
+	function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+          \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> d
+          \ denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p
+          \ denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> <C-c>
+          \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> q
+          \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+          \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space>
+          \ denite#do_map('toggle_select').'j'
+    nnoremap <silent><buffer><expr> s
+          \ denite#do_map('do_action', 'vsplit')
+	endfunction
+
+		autocmd FileType denite-filter
+		\ call s:denite_filter_my_settings()
+		function! s:denite_filter_my_settings() abort
+
+      imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+		  inoremap <silent><buffer><expr> <C-c>
+		  \ denite#do_map('quit')
+		  nnoremap <silent><buffer><expr> <C-c>
+		  \ denite#do_map('quit')
+		endfunction
+
 if executable('ag')
 	" The Silver Searcher
 
 call denite#custom#var('file/rec', 'command',
-      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+		\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
 	" Setup ignore patterns in your .agignore file!
 	" https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
@@ -19,14 +51,8 @@ call denite#custom#var('file/rec', 'command',
         \ [ '--skip-vcs-ignores', '--vimgrep', '--smart-case', '--hidden',
         \ '--path-to-ignore', $AGIGNORE ])
 
-	call denite#custom#map(
-	      \ 'normal',
-	      \ 's',
-	      \ '<denite:do_action:vsplit>',
-	      \ 'noremap'
-	      \)
 endif
-nnoremap <C-f> :<C-u>Denite file/rec<CR>
+  nnoremap <C-f> :<C-u>Denite file/rec -start-filter<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Esearch
