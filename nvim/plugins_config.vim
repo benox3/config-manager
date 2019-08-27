@@ -4,7 +4,7 @@
 if executable('ag')
 	" The Silver Searcher
 
-call denite#custom#var('file_rec', 'command',
+call denite#custom#var('file/rec', 'command',
       \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
 	" Setup ignore patterns in your .agignore file!
@@ -26,7 +26,7 @@ call denite#custom#var('file_rec', 'command',
 	      \ 'noremap'
 	      \)
 endif
-nnoremap <C-f> :<C-u>Denite file_rec<CR>
+nnoremap <C-f> :<C-u>Denite file/rec<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Esearch

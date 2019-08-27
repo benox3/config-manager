@@ -150,3 +150,7 @@ let g:tagbar_type_r = {
         \ 'v:FunctionVariables',
     \ ]
 \ }
+
+
+" linux
+set backupcopy=yes
