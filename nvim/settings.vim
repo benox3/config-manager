@@ -154,3 +154,6 @@ let g:tagbar_type_r = {
 
 " linux
 set backupcopy=yes
+
+" Automatically re-read file if a change was detected outside of vim
+set autoread

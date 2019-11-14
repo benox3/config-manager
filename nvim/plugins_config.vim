@@ -71,7 +71,6 @@ nnoremap <leader>nn :NERDTreeToggle<cr>
 " => Async Completion on startup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neosnippet#enable_completed_snippet = 1
-let g:deoplete#enable_at_startup = 1
 inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
@@ -180,3 +179,39 @@ syntax on
 let g:LanguageClient_serverCommands = {
     \ 'reason': ['~/rls-macos/reason-language-server'],
     \ }
+
+
+" COC
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> ge <Plug>(coc-diagnostic-info)
+
+" use <tab> for trigger completion and navigate to next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+"Close preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+hi! link CocErrorSign WarningMsg
+hi! link CocWarningSign Number
+hi! link CocInfoSign Type
+
+" === echodoc === "
+" Don't show last command
+set noshowcmd
+" Enable echodoc on startup
+set cmdheight=2
+let g:echodoc#enable_at_startup = 1
+
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
