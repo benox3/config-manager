@@ -67,6 +67,13 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 nnoremap <leader>nf :NERDTreeFind<cr>
 nnoremap <leader>nn :NERDTreeToggle<cr>
 
+let g:NERDTreeDirArrowExpandable = '⬏'
+let g:NERDTreeDirArrowCollapsible = '⬎'
+
+" Reload icons after init source
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Async Completion on startup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -215,3 +222,13 @@ set cmdheight=2
 let g:echodoc#enable_at_startup = 1
 
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
