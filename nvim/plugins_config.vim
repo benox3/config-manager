@@ -1,58 +1,76 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LeaderF settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Lf_ShortcutF = "<C-f>"
+let g:Lf_CommandMap = {'<C-]>': ['<C-S>'], '<Tab>': ['<C-O>']}
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:Lf_NormalMap = { "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>'], ["<C-C>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']] }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Denite settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" Define mappings
-	autocmd FileType denite call s:denite_my_settings()
-	function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-          \ denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d
-          \ denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p
-          \ denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> <C-c>
-          \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> q
-          \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i
-          \ denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space>
-          \ denite#do_map('toggle_select').'j'
-    nnoremap <silent><buffer><expr> s
-          \ denite#do_map('do_action', 'vsplit')
-	endfunction
+  " let g:python3_host_prog = expand('/usr/local/bin/python3')
 
-		autocmd FileType denite-filter
-		\ call s:denite_filter_my_settings()
-		function! s:denite_filter_my_settings() abort
+	" autocmd FileType denite call s:denite_my_settings()
+	" function! s:denite_my_settings() abort
+  "   nnoremap <silent><buffer><expr> <CR>
+  "         \ denite#do_map('do_action')
+  "   nnoremap <silent><buffer><expr> d
+  "         \ denite#do_map('do_action', 'delete')
+  "   nnoremap <silent><buffer><expr> p
+  "         \ denite#do_map('do_action', 'preview')
+  "   nnoremap <silent><buffer><expr> <C-c>
+  "         \ denite#do_map('quit')
+  "   nnoremap <silent><buffer><expr> q
+  "         \ denite#do_map('quit')
+  "   nnoremap <silent><buffer><expr> i
+  "         \ denite#do_map('open_filter_buffer')
+  "   nnoremap <silent><buffer><expr> <Space>
+  "         \ denite#do_map('toggle_select').'j'
+  "   nnoremap <silent><buffer><expr> s
+  "         \ denite#do_map('do_action', 'vsplit')
+	" endfunction
 
-      imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-		  inoremap <silent><buffer><expr> <C-c>
-		  \ denite#do_map('quit')
-		  nnoremap <silent><buffer><expr> <C-c>
-		  \ denite#do_map('quit')
-		endfunction
+		" autocmd FileType denite-filter
+		" \ call s:denite_filter_my_settings()
+		" function! s:denite_filter_my_settings() abort
 
-if executable('ag')
-	" The Silver Searcher
+  "     imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+		  " inoremap <silent><buffer><expr> <C-c>
+		  " \ denite#do_map('quit')
+		  " nnoremap <silent><buffer><expr> <C-c>
+		  " \ denite#do_map('quit')
+		" endfunction
 
-call denite#custom#var('file/rec', 'command',
-		\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+" if executable('ag')
+	" " The Silver Searcher
+  " call denite#custom#option('_', 'max_dynamic_update_candidates', 100000)
+	" call denite#custom#var('file/rec', 'command',
+	" \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
-	" Setup ignore patterns in your .agignore file!
-	" https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
+	" " Setup ignore patterns in your .agignore file!
+	" " https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
 
-	call denite#custom#var('grep', 'command', ['ag'])
-	call denite#custom#var('grep', 'recursive_opts', [])
-	call denite#custom#var('grep', 'pattern_opt', [])
-	call denite#custom#var('grep', 'separator', ['--'])
-	call denite#custom#var('grep', 'final_opts', [])
-	call denite#custom#var('grep', 'default_opts',
-        \ [ '--skip-vcs-ignores', '--vimgrep', '--smart-case', '--hidden',
-        \ '--path-to-ignore', $AGIGNORE ])
+	" call denite#custom#var('grep', 'command', ['ag'])
+	" call denite#custom#var('grep', 'recursive_opts', [])
+	" call denite#custom#var('grep', 'pattern_opt', [])
+	" call denite#custom#var('grep', 'separator', ['--'])
+	" call denite#custom#var('grep', 'final_opts', [])
+	" call denite#custom#var('grep', 'default_opts',
+  "       \ [ '--skip-vcs-ignores', '--vimgrep', '--smart-case', '--hidden',
+  "       \ '--path-to-ignore', $AGIGNORE ])
 
-endif
-  nnoremap <C-f> :<C-u>Denite file/rec -start-filter<CR>
+" endif
+  " nnoremap <C-f> :<C-u>Denite file/rec -start-filter<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Esearch
@@ -80,6 +98,8 @@ endif
 let g:neosnippet#enable_completed_snippet = 1
 inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <c-space> coc#refresh()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Airline *NOT BEING USED*
@@ -151,17 +171,7 @@ set termguicolors
 let g:vim_monokai_tasty_italic = 1
 colorscheme vim-monokai-tasty
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => ALE
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_linters = {
-\   'javascript': ['eslint', 'flow'],
-\   'typescript': ['tslint'],
-\}
 
-let g:ale_fixers = { 'typescript': ['tslint']}
-let g:ale_completion_enabled = 0
-let g:ale_fix_on_save = 1
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Goyo
@@ -190,11 +200,31 @@ let g:LanguageClient_serverCommands = {
 
 " COC
 " Remap keys for gotos
+"" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> ge <Plug>(coc-diagnostic-info)
+nmap <silent> ge <Plug>(coc-diagnostic-info)
+nmap <leader>f  <Plug>(coc-fix-current)
 
 " use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
