@@ -131,7 +131,7 @@ alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias vi='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias ag="ag --path-to-ignore $AGIGNORE"
 
-[[ $TMUX = "" ]] && export TERM="xterm-256color"
+[[ $TMUX = "" ]] && export TERM="screen-256color"
 
 export SECRET_ZSHRC="$HOME/config-manager/zsh/.secret_zshrc"
 include $SECRET_ZSHRC
