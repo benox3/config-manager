@@ -147,3 +147,5 @@ include $SECRET_ZSHRC
 
 # alias ls='colorls --dark --sort-dirs'
 # alias lc='colorls --tree --dark'
+
+eval $(thefuck --alias)

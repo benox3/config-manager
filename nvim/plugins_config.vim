@@ -18,7 +18,7 @@ let g:Lf_NormalMap = { "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit
 " => Denite settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" Define mappings
-  " let g:python3_host_prog = expand('/usr/local/bin/python3')
+  let g:python3_host_prog = expand('/usr/local/bin/python3')
 
 	" autocmd FileType denite call s:denite_my_settings()
 	" function! s:denite_my_settings() abort
@@ -225,6 +225,18 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> ge <Plug>(coc-diagnostic-info)
 nmap <silent> ge <Plug>(coc-diagnostic-info)
 nmap <leader>f  <Plug>(coc-fix-current)
+command! -nargs=0 Format :call CocAction('format')
+autocmd FileType javascript let b:coc_root_patterns = ['.eslintrc.js', 'tsconfig.json']
+autocmd FileType javascriptreact let b:coc_root_patterns = ['.eslintrc.js', 'tsconfig.json']
+autocmd FileType typescript let b:coc_root_patterns = ['.eslintrc.js', 'tsconfig.json']
+autocmd FileType typescriptreact let b:coc_root_patterns = ['.eslintrc.js', 'tsconfig.json']
+let g:WorkspaceFolders = [
+      \ '/Users/benbudnevich/Dev/iui-release-management/packages/iui',
+      \ '/Users/benbudnevich/Dev/iui-release-management/packages/dank',
+      \ '/Users/benbudnevich/Dev/iui/packages/iui',
+      \ '/Users/benbudnevich/Dev/iui/packages/dank'
+      \]
+
 
 " use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
@@ -262,3 +274,7 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+
+" sneak"
+let g:sneak#label = 1

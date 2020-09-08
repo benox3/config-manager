@@ -1,6 +1,8 @@
 "tags
 set tags=./tags,tags;$HOME
 
+set sessionoptions+=globals
+
 tnoremap <Esc> <C-\><C-n>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
