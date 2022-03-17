@@ -1,16 +1,20 @@
-# If you come from bash you might have to change your $PATH.
-export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+# Fig pre block. Keep at the top of this file.
+export PATH="${PATH}:${HOME}/.local/bin"
+eval "$(fig init zsh pre)"
 
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_FIXTERM_WITH_256COLOR=true
-ZSH_TMUX_AUTOSTART_ONCE=true
-ZSH_TMUX_AUTOCONNECT=true
-ZSH_TMUX_AUTOQUIT=false
+
+
+# If you come from bash you might have to change your $PATH.
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+export GIT_EDITOR=nvim
+export EDITOR=nvim
+# ZSH_TMUX_AUTOSTART=false
+# ZSH_TMUX_FIXTERM_WITH_256COLOR=true
+# ZSH_TMUX_AUTOSTART_ONCE=tru#e
+# ZSH_TMUX_AUTOCONNECT=true
+# ZSH_TMUX_AUTOQUIT=false
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -113,7 +117,7 @@ source $ZSH/oh-my-zsh.sh
 #vim mode
 bindkey -v
 bindkey '^R' history-incremental-search-backward
-tmux source ~/.tmux.conf
+# tmux source ~/.tmux.conf
 
 #include file if it exists function
 include () {
@@ -131,7 +135,7 @@ alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias vi='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias ag="ag --path-to-ignore $AGIGNORE"
 
-[[ $TMUX = "" ]] && export TERM="screen-256color"
+# [[ $TMUX = "" ]] && export TERM="screen-256color"
 
 export SECRET_ZSHRC="$HOME/config-manager/zsh/.secret_zshrc"
 include $SECRET_ZSHRC
@@ -149,3 +153,40 @@ include $SECRET_ZSHRC
 # alias lc='colorls --tree --dark'
 
 eval $(thefuck --alias)
+export HOMEBREW_CASK_OPTS="--no-quarantine"
+
+note () {
+  local notes_dir="$HOME/vimwiki/notes"
+  case "$1" in
+    c)
+      cd "$notes_dir"
+      ;;
+    l)
+      ls "$notes_dir"
+      ;;
+    *)
+      pushd "$notes_dir"
+        touch "$1".wiki
+        echo "\n[[$1.wiki|$1]]" >> index.wiki
+        vim "$1".wiki
+      popd
+  esac
+}
+
+export YVM_DIR=/usr/local/opt/yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+export GOPATH=~/go
+export PATH="/usr/local/opt/php@7.1/bin:$GOPATH/bin:$PATH"
+# export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+export GONOSUMDB="gitlab.com/inturn/*,bitbucket.org/inturnco/*"
+export GOPRIVATE="gitlab.com/inturn/*,bitbucket.org/inturnco/*"
+# export PATH=$PATH:$GOPATH/bin
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+
+eval "$(starship init zsh)"
+
+
+
+# Fig post block. Keep at the bottom of this file.
+eval "$(fig init zsh post)"

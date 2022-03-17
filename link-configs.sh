@@ -24,7 +24,8 @@ ln -fsn $PWD/alacritty $HOME/.config
 
 # tmux
 mv $HOME/.tmux $BACKUP_CONFIGS_DIR
-ln -fsn $PWD/tmux/.tmux $HOME
+mkdir -p $HOME/.tmux
+ln -fsn $PWD/tmux/plugins $HOME/.tmux/plugins
 mv $HOME/.tmux.conf $BACKUP_CONFIGS_DIR
 ln -fsn $PWD/tmux/.tmux.conf $HOME
 

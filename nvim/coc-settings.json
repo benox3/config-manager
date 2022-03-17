@@ -2,16 +2,26 @@
   "codeLens.enable": true,
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "diagnostic.errorSign": "•",
+  "diagnostic.errorSign": "x",
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "•",
   "coc.preferences.rootPatterns": [".eslintrc.js", "tsconfig.json"],
-  "eslint.autoFix": true,
+  "coc.preferences.semanticTokensHighlights": false,
+  "eslint.debug": true,
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "markdown",
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "json",
+    "graphql",
+    "go"
   ]
 }

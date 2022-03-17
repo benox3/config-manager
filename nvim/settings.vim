@@ -1,6 +1,5 @@
 "tags
 set tags=./tags,tags;$HOME
-
 set sessionoptions+=globals
 
 tnoremap <Esc> <C-\><C-n>
@@ -52,14 +51,14 @@ vnoremap y "+y
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => .vimrc shortcut and reloading
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>e :e ~/config-manager/nvim/settings.vim<CR>
+nnoremap <leader>e :e ~/config-manager/nvim/settings.vim
 "Auto reload vimrc on save
 augroup myvimrc
   au!
-  au BufWritePost ~/config-manager/nvim/init.vim nested source ~/config-manager/nvim/init.vim
-  au BufWritePost ~/config-manager/nvim/settings.vim nested source ~/config-manager/nvim/init.vim
-  au BufWritePost ~/config-manager/nvim/plugins.vim nested source ~/config-manager/nvim/init.vim
-  au BufWritePost ~/config-manager/nvim/plugins_config.vim nested source ~/config-manager/nvim/init.vim
+  au BufWritePost ~/config-manager/nvim/init.lua nested lua loadfile('~/config-manager/nvim/init')
+  au BufWritePost ~/config-manager/nvim/settings.vim nested lua loadfile('~/config-manager/nvim/init')
+  au BufWritePost ~/config-manager/nvim/plugins.vim nested lua loadfile('~/config-manager/nvim/init')
+  au BufWritePost ~/config-manager/nvim/plugins_config.vim nested lua loadfile('~/config-manager/nvim/init')
 augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Numbers
@@ -76,13 +75,21 @@ set tabstop=2 smarttab shiftwidth=2 expandtab tabstop=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Close Buffer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>bd :bd!<cr>
+
+if exists('g:vscode')
+  nnoremap <leader>bd <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
+else
+  nnoremap <leader>bd :bd!<cr>
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Close All Buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>ba :%bd\|e#<cr>
-
+if exists('g:vscode')
+  nnoremap <leader>ba <Cmd>call VSCodeNotify('workbench.action.closeOtherEditors')<CR> <Cmd>call VSCodeNotify('workbench.action.closeEditorsInOtherGroups')<CR>
+else
+  nnoremap <leader>ba :%bd\|e#<cr>
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Close All Buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -171,3 +178,4 @@ augroup checktime
         autocmd BufEnter,FocusGained,BufEnter,FocusLost,WinLeave * checktime
     endif
 augroup END
+
