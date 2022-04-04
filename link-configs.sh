@@ -22,6 +22,9 @@ ln -fsn $HOME/.config/nvim/init.vim $HOME/.vimrc
 mv $HOME/.config/alacritty $BACKUP_CONFIGS_DIR
 ln -fsn $PWD/alacritty $HOME/.config
 
+mv $HOME/.config/starship.toml
+ln -fsn $PWD/starship.toml $CONFIG_DIR/starship.toml
+
 # tmux
 mv $HOME/.tmux $BACKUP_CONFIGS_DIR
 mkdir -p $HOME/.tmux
