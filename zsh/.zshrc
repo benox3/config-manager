@@ -2,8 +2,6 @@
 export PATH="${PATH}:${HOME}/.local/bin"
 eval "$(fig init zsh pre)"
 
-
-
 # If you come from bash you might have to change your $PATH.
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 export GIT_EDITOR=nvim
@@ -186,7 +184,6 @@ export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
 eval "$(starship init zsh)"
 
-
-
 # Fig post block. Keep at the bottom of this file.
 eval "$(fig init zsh post)"
+
