@@ -3,8 +3,8 @@ local b = null_ls.builtins
 
 local sources = {
 
-   b.formatting.prettierd.with { filetypes = { "html", "markdown", "css" } },
-   b.formatting.deno_fmt,
+   b.code_actions.eslint,
+   b.formatting.eslint_d,
 
    -- Lua
    b.formatting.stylua,
@@ -25,7 +25,7 @@ M.setup = function()
       -- format on save
       on_attach = function(client)
          if client.resolved_capabilities.document_formatting then
-            vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
+            vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()"
          end
       end,
    }

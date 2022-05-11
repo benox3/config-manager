@@ -75,7 +75,6 @@ ZSH_THEME="agnoster"
 plugins=(
   git
   tmux
-  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -183,4 +182,4 @@ export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 eval "$(starship init zsh)"
 
 # Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"
+eval "$(fig init zsh post)"

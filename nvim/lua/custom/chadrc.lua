@@ -13,6 +13,7 @@ M.options = {
    end,
 }
 
+local nvimtree = require "custom.plugins.configs.nvimtree"
 local userPlugins = require "custom.plugins"
 
 M.plugins = {
@@ -25,6 +26,11 @@ M.plugins = {
       },
 
    },
+
+    override = {
+      ["kyazdani42/nvim-tree.lua"] = nvimtree,
+   },
+
    user = userPlugins,
 }
 
