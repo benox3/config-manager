@@ -502,4 +502,4 @@ key_bindings:
   - { key: F12,      mods: Super,   chars: "\x1b[24;3~"                      }
   - { key: NumpadEnter,             chars: "\n"                              }
   - { key: P,        mods: Super,     chars: "\x1b,ff" }
-  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
+  - { key: N,   mods: Super, action: CreateNewWindow }
